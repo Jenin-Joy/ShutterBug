@@ -1,0 +1,10 @@
+{% for i in model %}
+<div class="card">
+    <div><img src="{{i.model_photo.url}}" width="150" height="150" alt=""></div>
+    <div>Name : {{i.model_name}}</div>
+    <div>Email : {{i.model_email}}</div>
+    <div>Contact : {{i.model_contact}}</div>
+    <div>Address : {{i.model_address}}</div>
+    <div><a href="{% url 'webphotographer:ModelBooking' i.id %}">Book Now</a> <a href="{% url 'webphotographer:ViewModelPost' i.id %}">View Post</a></div>
+</div>
+{% endfor %}

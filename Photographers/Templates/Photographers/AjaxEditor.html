@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-card" id="result">
+    {% for i in editor %}
+        <div class="card">
+            <div><img src="{{i.editor_photo.url}}" width="150" height="150" alt=""></div>
+            <div>Name : {{i.editor_name}}</div>
+            <div>Email : {{i.editor_email}}</div>
+            <div>Contact : {{i.editor_contact}}</div>
+            <div>Address : {{i.editor_address}}</div>
+            <div><a href="{% url 'webphotographer:EditorBooking' i.id %}">Book Now</a> <a href="{% url 'webphotographer:EditorViewPost' i.id %}">View Works</a></div>
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>
+

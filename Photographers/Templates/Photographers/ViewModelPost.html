@@ -1,0 +1,42 @@
+{% extends 'Photographers/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Post</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #1ae795; /* White heading color */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form name="frmViewPost" method="post" action="">
+        <br>
+        <h1>View Post</h1>
+        {% csrf_token %}
+        {% for i in postdata %}
+        <table border="2" align="center" cellpadding="10">
+                <tr>
+                    <td colspan="2" align="center"><img src="{{i.post_image.url}}" width="150" height="150" alt=""></td>
+                 </tr>
+                <tr>
+                    <td>Caption</td>
+                    <td>{{i.post_caption}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <a href="{% url 'webphotographer:ModelViewMore' i.id %}">View More</a>
+                    </td>
+                </tr>        
+        </table>
+        {% endfor %}
+    </form>
+</body>
+</html>
+{% endblock content %}

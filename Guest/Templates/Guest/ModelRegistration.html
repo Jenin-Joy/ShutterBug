@@ -1,0 +1,210 @@
+{% extends 'Guest/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Registration</title>
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border: 1px solid #1ae795; /* Border color */
+        }
+
+        h1 {
+            text-align: center;
+            color: #1ae795; /* White heading color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            color: #fff; /* Text color */
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border: 1px solid #1ae795; /* Input border color */
+            border-radius: 5px;
+            background-color: #444; /* Input background color */
+            color: #fff; /* Input text color */
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #fff; /* Input text color */
+            background-color: #444; /* Input background color */
+            border: 1px solid #1ae795; /* Input border color */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1ae795; /* Submit button background color */
+            color: #000; /* Submit button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0e7e4a; /* Hovered submit button background color */
+        }
+
+        input[type="reset"] {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1ae795; /* Reset button background color */
+            color: #000; /* Reset button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #0e7e4a; /* Hovered reset button background color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Model Registration</h1>
+        <form name="frmModelRegistration" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" pattern="[A-Za-z]+" name="txtmodel" placeholder="Enter model name" required></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" pattern="^\d{10}$" name="txtcontact" placeholder="Enter contact" required></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="txtemail" placeholder="Enter your email" required></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="txtaddress" placeholder="Enter address" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <label><input type="radio" name="gender" value="male" required> Male</label>
+                        <label><input type="radio" name="gender" value="female" required> Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td><select name="txtdistrict" id="txtdistrict" required>
+                        <option>Select District</option>
+                        {% for i in district %}   
+                            <option value="{{i.id}}">{{i.district_name}}</option>
+                        {% endfor %} 
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Place</td>
+                    <td><select name="txtplace" id="txtplace" required>
+                        <option>Select Place</option>
+                        {% for i in pla %}   
+                            <option>
+                            {% if i.id == place.district_id_id %}
+                            selected
+                            {% endif %}                    
+                            value="{{i.id}}">{{i.place_name}}</option>
+                        {% endfor %} 
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Photo</td>
+                    <td><input type="file" name="file_photo" required></td>
+                </tr>
+                <tr>
+                    <td>Proof</td>
+                    <td><input type="file" name="file_proof" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="txtpassword" placeholder="Enter password" required></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input type="password" name="txtcpassword" placeholder="Confirm password" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="btnsubmit" value="Register">
+                        <input type="reset" name="btncancel" value="Cancel">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
+
+
+
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#txtdistrict").change(function () {
+        var did = $(this).val();
+        var ur = "{% url 'webguest:ajaxplace' %}"
+        $.ajax({
+            url: ur,
+            data: { disd: did, },
+            success: function (data) {
+                $("#txtplace").html(data);
+            },
+        });
+    });
+</script>
+{% endblock content %}

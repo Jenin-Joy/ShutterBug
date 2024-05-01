@@ -1,0 +1,42 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographer Booking</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #1ae795; /* White heading color */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form name="frmPhotographerBooking" action="" method="post" enctype="multipart/form-data">
+        <br>
+        <h1>Book Photographer</h1>
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td>For Date</td>
+                <td><input type="date" name="for_date" required></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><textarea name="txtdescription" required></textarea></td>
+            </tr>
+            <tr >
+                <td colspan="2" align="center">
+                    <input type="submit" name="txtsubmit" value="Save">
+                    <input type="reset" name="txtcancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock content %}

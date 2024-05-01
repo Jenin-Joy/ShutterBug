@@ -1,0 +1,10 @@
+{% for i in photographer %}
+<div class="card">
+    <div><img src="{{i.photographer_photo.url}}" width="150" height="150" alt=""></div>
+    <div>Name : {{i.photographer_name}}</div>
+    <div>Email : {{i.photographer_email}}</div>
+    <div>Contact : {{i.photographer_contact}}</div>
+    <div>Address : {{i.photographer_address}}</div>
+    <div><a href="{% url 'webuser:PhotographerBooking' i.id %}">Book Now</a> <a href="{% url 'webuser:ViewPost' i.id %}">View Post</a></div>
+</div>
+{% endfor %}

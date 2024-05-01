@@ -1,0 +1,128 @@
+{% extends 'Photographers/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Editor</title>
+    <style>
+        .main-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .card {
+            padding: 20px;
+            background-color: #E1F5FE;
+            width: fit-content;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            color: #1ae795; /* White heading color */
+            margin-bottom: 20px;
+        }
+        /* CSS for dropdown select */
+        select[name="txteditor"] {
+            width: calc(100% - 24px);
+            padding: 10px; /* Increase padding for larger size */
+            border: 2px solid #1ae795;
+            border-radius: 25px; /* Make the border round */
+            background-color: #fff;
+            color: #333;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            appearance: none; /* Remove default dropdown arrow */
+            padding-right: 40px; /* Add space for custom arrow */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="#1ae795" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px"><path d="M7 10l5 5 5-5H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 10px center; /* Position the arrow */
+            text-align: center; /* Center-align the text */
+        }
+        /* CSS for hyperlink text */
+        .card a {
+            color: #000;
+            text-decoration: none; /* Remove underline */
+            margin-right: 10px; /* Add some space between links */
+        }
+ /* CSS to make table larger */
+        table {
+            
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th{
+            padding: 12px;
+            color: #fff;
+        }
+        td{
+            padding: 12px;
+            color: #fff;
+            text-align: center; /* Center-align the text */
+
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+    </style>
+</head>
+<body>
+    <form name="frmSearchEditor" method="post" action="">
+        <h1>Search Editor</h1>
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td>Editor Category</td>
+                <td> <select name="txteditor" id="txteditor" required>
+                    <option>...Select...</option>
+                    {% for i in editorcategory %}
+                        <option value="{{ i.id }}">{{ i.ecategory_name }}
+                        </option>
+                    {% endfor %}     
+                </select></td>
+            </tr>
+        </table>
+        <br><br>
+        <div class="main-card" id="result">
+            {% for i in editor %}
+            <div class="card">
+                <div><img src="{{i.editor_photo.url}}" width="150" height="150" alt=""></div>
+                <div>Name : {{i.editor_name}}</div>
+                <div>Email : {{i.editor_email}}</div>
+                <div>Contact : {{i.editor_contact}}</div>
+                <div>Address : {{i.editor_address}}</div>
+                <div><a href="{% url 'webphotographer:EditorBooking' i.id %}">Book Now</a> <a href="{% url 'webphotographer:EditorViewPost' i.id %}">View Works</a></div>
+            </div>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#txteditor").change(function () {
+        var cid = $(this).val();
+        var ur = "{% url 'webphotographer:ajaxeditor' %}"
+        $.ajax({
+            url: ur,
+            data: { cid: cid, },
+            success: function (data) {
+                $("#result").html(data);
+            },
+        });
+    });
+</script> 
+{% endblock content %}

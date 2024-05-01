@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ShutterBug</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Main/fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/owl.theme.default.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/lightgallery.min.css' %}">    
+
+  <link rel="stylesheet" href="{% static 'Main/css/bootstrap-datepicker.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/fonts/flaticon/font/flaticon.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/swiper.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/aos.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/style.css' %}">
+
+</head>
+<body>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+
+
+
+    <header class="site-navbar py-3" role="banner">
+
+      <div class="container-fluid">
+        <div class="row align-items-center">
+
+          <div class="col-6 col-xl-2" data-aos="fade-down">
+            <h1 class="mb-0"><a href="{% url 'webguest:index' %}" class="text-white h2 mb-0">ShutterBug</a></h1>
+          </div>
+          <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
+            <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
+
+              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                <li><a href="{% url 'webguest:index' %}">Home</a></li>
+                <!-- <li class="has-children">
+                  <a href="single.html">Gallery</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Nature</a></li>
+                    <li><a href="#">Portrait</a></li>
+                    <li><a href="#">People</a></li>
+                    <li><a href="#">Architecture</a></li>
+                    <li><a href="#">Animals</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Travel</a></li>
+                    <li class="has-children">
+                      <a href="#">Sub Menu</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li> -->
+                <li class="has-children">
+                  <a href="#">Register</a>
+                  <ul class="dropdown">
+                      <li><a href="{% url 'webguest:UserRegistration' %}">User</a></li>
+                      <li><a href="{% url 'webguest:PhotographerRegistration' %}">Photographer</a></li>
+                      <li><a href="{% url 'webguest:ModelRegistration' %}">Model</a></li>
+                      <li><a href="{% url 'webguest:EditorRegistration' %}">Editor</a></li>
+                  </ul>
+              </li>
+                <li><a href="{% url 'webguest:services' %}">Services</a></li>
+                <li><a href="{% url 'webguest:about' %}">About</a></li>
+                <li><a href="{% url 'webguest:contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="col-6 col-sm-1 offset-sm-1 text-center " data-aos="fade-down">
+            <!-- <div class="d-none d-xl-inline-block">
+              <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
+                <li>
+                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                </li>
+                <li>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                </li>
+                <li>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                </li>
+                <li>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-youtube-play"></span></a>
+                </li>
+              </ul> -->
+              <div class="login-box" style="border: 1px solid #1ae795; padding: 10px;">
+                <a href="{% url 'webguest:Login' %}" class="login-link">Login</a>
+              </div>
+               
+            </div>
+
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>
+
+
+
+    <div class="site-section"  data-aos="fade">
+      <div class="container-fluid">
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-7">
+            <div class="row mb-5">
+              <div class="col-12 ">
+                <h2 class="site-section-heading text-center">My Services</h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5">
+              <div class="h-100 p-4 p-lg-5 site-block-feature-7">
+                  <span class="icon flaticon-camera display-3 text-primary mb-4 d-block"></span>
+                  <h3 class="text-white h4">Photography Sessions</h3>
+                  <p>Immerse yourself in captivating photography sessions that capture the essence of your vision. Our experienced photographers blend creativity and technical expertise to deliver stunning visual narratives.</p>
+                  <p><strong class="font-weight-bold text-primary">Starting from ₹5,000</strong></p>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5">
+              <div class="h-100 p-4 p-lg-5 site-block-feature-7">
+                  <span class="icon flaticon-picture display-3 text-primary mb-4 d-block"></span>
+                  <h3 class="text-white h4">Wedding Photography</h3>
+                  <p>Experience the magic of your special day through our wedding photography service. Our team of talented photographers and models collaborate to create timeless images that reflect the beauty and emotion of your wedding.</p>
+                  <p><strong class="font-weight-bold text-primary">Starting from ₹20,000</strong></p>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5">
+              <div class="h-100 p-4 p-lg-5 site-block-feature-7">
+                  <span class="icon flaticon-sheep display-3 text-primary mb-4 d-block"></span>
+                  <h3 class="text-white h4">Wildlife Photography & Editing</h3>
+                  <p>Embark on an adventure through the lens of wildlife photography and editing. Our team of passionate photographers and skilled editors bring the wonders of nature to life, capturing breathtaking moments and enhancing them with precision and artistry.</p>
+                  <p><strong class="font-weight-bold text-primary">Starting from ₹10,000</strong></p>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5">
+              <div class="h-100 p-4 p-lg-5 site-block-feature-7">
+                  <span class="icon flaticon-frame display-3 text-primary mb-4 d-block"></span>
+                  <h3 class="text-white h4">Portrait Photography</h3>
+                  <p>Celebrate the essence of individuality with our portrait photography service. Our photographers collaborate with talented models to create captivating portraits that reflect personality, emotion, and style.</p>
+                  <p><strong class="font-weight-bold text-primary">Starting from ₹3,500</strong></p>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5">
+              <div class="h-100 p-4 p-lg-5 site-block-feature-7">
+                  <span class="icon flaticon-eiffel-tower display-3 text-primary mb-4 d-block"></span>
+                  <h3 class="text-white h4">Photo Editing</h3>
+                  <p>Transform your photos into works of art with our professional photo editing service. Our skilled editors leverage advanced techniques and creative vision to enhance colors, remove imperfections, and bring out the best in every image.</p>
+                  <p><strong class="font-weight-bold text-primary">Starting from ₹2,000</strong></p>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5">
+              <div class="h-100 p-4 p-lg-5 site-block-feature-7">
+                  <span class="icon flaticon-video-play display-3 text-primary mb-4 d-block"></span>
+                  <h3 class="text-white h4">Video Editing</h3>
+                  <p>Elevate your storytelling with our video editing service. Our team of experienced editors and talented models collaborate to create engaging and immersive videos that captivate audiences and leave a lasting impression.</p>
+                  <p><strong class="font-weight-bold text-primary">Starting from ₹4,500</strong></p>
+              </div>
+          </div>
+      </div>
+      
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer py-4">
+      <div class="container-fluid text-center">
+        <p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+      </div>
+    </div>
+
+    
+
+    
+    
+  </div>
+
+  <script src="{% static 'Main/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'Main/js/popper.min.js' %}"></script>
+  <script src="{% static 'Main/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'Main/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'Main/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'Main/js/swiper.min.js' %}"></script>
+  <script src="{% static 'Main/js/aos.js' %}"></script>
+
+  <script src="{% static 'Main/js/picturefill.min.js' %}"></script>
+  <script src="{% static 'Main/js/lightgallery-all.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.mousewheel.min.js' %}"></script>
+  <script src="{% static 'Main/js/main.js' %}"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('#lightgallery').lightGallery();
+    });
+  </script>
+
+</body>
+</html>

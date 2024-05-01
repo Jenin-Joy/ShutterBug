@@ -1,0 +1,128 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographer Category</title>
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px; /* Adjust container width as needed */
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border: 1px solid #EB1616; /* Red border color */
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff; /* Red heading color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            color: #fff; /* Text color */
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border: 1px solid #EB1616; /* Input border color */
+            border-radius: 5px;
+            background-color: #444; /* Input background color */
+            color: #fff; /* Input text color */
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #EB1616; /* Submit button background color */
+            color: #fff; /* Submit button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #BF1212; /* Hovered button background color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Photographer Category</h1>
+        <form name="frmPhotographerCategory" method="post" action="">
+            {% csrf_token %}
+            <table border="0">
+                <tr>
+                    <td>Category Name</td>
+                    <td><input type="text" name="txtpcategory" id="txtpcategory" placeholder="Enter Category Name" required value="{{pcat.pcategory_name}}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="btnsave" id="btnsave" value="Save">
+                        <input type="reset" name="btncancel" id="btncancel" value="Cancel">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <br><br>
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <th>Sl.No</th>
+                <th>Photographer Category</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.pcategory_name}}</td>
+                <td>
+                    <a href="{% url 'webadmin:DeletePhotographerCategory' i.id %}">Delete</a>
+                    <a href="{% url 'webadmin:EditPhotographerCategory' i.id %}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock content %}

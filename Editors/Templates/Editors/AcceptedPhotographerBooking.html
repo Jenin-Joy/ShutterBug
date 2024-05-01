@@ -1,0 +1,64 @@
+{% extends 'Editors/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accepted Photographer Booking</title>
+    <style>
+        th {
+            background-color: #1ae795;
+            color: #000;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff; /* White heading color */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form name="fromviewphotographerbooking" method="post" action="" enctype="multipart/form-data">
+        <br>
+        <h1>Accepted Photographer</h1>
+        
+        {% csrf_token %}
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <th>Sl.No</th>
+                <th>Photographer Name</th>
+                <th>Photographer Photo</th>
+                <th>Contact</th>
+                <th>Photographer Email</th>              
+                <th>Booked Date</th>
+                <th>For Booking</th>
+                <th>Description</th>
+                <th>Action</th>
+                
+            </tr>
+            {% for i in bookingdata %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.photographer_id.photographer_name}}</td>
+                <td><a href="{{i.photographer_id.photographer_photo.url}}"><img src="{{i.photographer_id.photographer_photo.url}}" height="200" width="200" alt=""> </a></td>
+                <td>{{i.photographer_id.photographer_contact}}</td>
+                <td>{{i.photographer_id.photographer_email}}</td>
+                <td>{{i.booked_date}}</td>
+                <td>{{i.booking_date}}</td>
+                <td>{{i.ebooking_description}}</td>
+                <td>
+                    <a href="{% url 'webeditor:RejectPhotographer' i.id %}">Reject</a>
+                    <a href="{% url 'webeditor:chatpage' i.photographer_id_id %}">Chat</a>
+
+                </td> 
+            </tr>
+            {% endfor %}
+
+        </table>
+    </form>
+</body>
+</html>
+{% endblock content %}

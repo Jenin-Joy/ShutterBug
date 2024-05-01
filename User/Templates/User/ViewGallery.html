@@ -1,0 +1,49 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Gallery</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .image-wrapper {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #ccc;
+            margin: 5px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% for i in viewgallerydata %}
+            {% ifchanged %}
+                <div>{{ i.addgallery_caption }}</div>
+            {% endifchanged %}
+            <div class="image-wrapper">
+                <a href="{{ i.addgallery_image.url }}">
+                    <img src="{{ i.addgallery_image.url }}" alt="">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock content %}

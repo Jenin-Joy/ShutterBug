@@ -1,0 +1,101 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply</title>
+    <style>
+        /* Styling for table */
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        /* Styling for table header */
+        th {
+            background-color: #EB1616;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            color: #fff; /* White heading color */
+            margin-bottom: 20px;
+        }
+        input[type="submit"], input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #EB1616; /* Submit button background color */
+            color: #fff; /* Submit button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #BF1212; /* Hovered button background color */
+        }
+    </style>
+</head>
+<body>
+    <form name="frmReply" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br><br>
+        <h1>Complaint Reply</h1>
+        
+        <table border="2" align="center">
+            <tr>
+                <td>Title</td>
+                <td>{{complaintdata.complaint_title}}</td>
+            </tr>
+            <tr>
+                <td>Complaint</td>
+                <td>{{complaintdata.complaint_description}}</td>
+            </tr>
+            <tr>
+                <td>Reply</td>
+                <td><textarea name="txtreply" required></textarea></td>
+            </tr>
+            <tr >
+                <td colspan="2" align="center">
+                    <input type="submit" name="txtsubmit" value="Send">
+                    <input type="reset" name="txtcancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock content %}

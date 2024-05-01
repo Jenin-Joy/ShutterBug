@@ -1,0 +1,195 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    
+</head>
+<body>
+    <br><br>
+    <div class="row g-4">
+        <!-- Total Users Section -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-user fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <!-- Add an ID to the link for easy targeting -->
+                    <a href="#" class="toggleList" data-target="userList">
+                        <p class="mb-2">Total <br> Users</p>
+                    </a>
+                    <h6 class="mb-0" id="totalUsers">{{ total_users }}</h6>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Total Photographers Section -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-user fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <!-- Add an ID to the link for easy targeting -->
+                    <a href="#" class="toggleList" data-target="photographerList">
+                        <p class="mb-2">Total <br> Photographers</p>
+                    </a>
+                    <h6 class="mb-0" id="totalPhotographers">{{ total_photographers }}</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Editors Section -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-user fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <!-- Add an ID to the link for easy targeting -->
+                    <a href="#" class="toggleList" data-target="editorList">
+                        <p class="mb-2">Total <br> Editors</p>
+                    </a>
+                    <h6 class="mb-0" id="totalEditors">{{ total_editors }}</h6>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Total Models Section -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-user fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <!-- Add an ID to the link for easy targeting -->
+                    <a href="#" class="toggleList" data-target="modelList">
+                        <p class="mb-2">Total <br> Models</p>
+                    </a>
+                    <h6 class="mb-0" id="totalModels">{{ total_models }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Display usernames, owner names, and worker names initially hidden -->
+    <div class="container-fluid pt-4 px-4" id="tableContainer" style="display: none;">
+        <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">User List</h6>
+                <a href="">Show All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="userList">
+                        {% if users %}
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.user_name }}</td>
+                                    <td>{{ user.user_email }}</td>
+                                    <td>{{ user.user_contact }}</td>
+                                    <td>{{ user.user_status }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                    
+                    <tbody class="photographerList">
+                        {% if photographers %}
+                            {% for photographer in photographers %}
+                                <tr>
+                                    <td>{{ photographer.photographer_name }}</td>
+                                    <td>{{ photographer.photographer_email }}</td>
+                                    <td>{{ photographer.photographer_contact }}</td>
+                                    <td>{{ photographer.photographer_status }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+
+                    <tbody class="editorList">
+                        {% if editors %}
+                            {% for editor in editors %}
+                                <tr>
+                                    <td>{{ editor.editor_name }}</td>
+                                    <td>{{ editor.editor_email }}</td>
+                                    <td>{{ editor.editor_contact }}</td>
+                                    <td>{{ editor.editor_status }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                    
+                    <tbody class="modelList">
+                        {% if models %}
+                            {% for model in models %}
+                                <tr>
+                                    <td>{{ model.model_name }}</td>
+                                    <td>{{ model.model_email }}</td>
+                                    <td>{{ model.model_contact }}</td>
+                                    <td>{{ model.model_status }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript to toggle the display of user lists -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Add click event listener to all elements with class toggleList
+            var toggleLinks = document.querySelectorAll('.toggleList');
+            toggleLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    // Prevent default link behavior
+                    event.preventDefault();
+                    // Get the target ID from the data-target attribute
+                    var targetId = this.getAttribute('data-target');
+                    // Hide all lists first
+                    var allLists = document.querySelectorAll('.userList, .photographerList, .editorList, .modelList');
+                    allLists.forEach(function(list) {
+                        list.style.display = "none";
+                    });
+                    // Display the corresponding list
+                    var targetList = document.querySelector('.' + targetId);
+                    targetList.style.display = "table-row-group"; // Show as table row group
+                    // Show the table container
+                    document.getElementById("tableContainer").style.display = "block";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock content %}

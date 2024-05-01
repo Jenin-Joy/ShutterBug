@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ShutterBug</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Main/fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'Main/css/owl.theme.default.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/lightgallery.min.css' %}">    
+
+  <link rel="stylesheet" href="{% static 'Main/css/bootstrap-datepicker.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/fonts/flaticon/font/flaticon.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/swiper.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/aos.css' %}">
+
+  <link rel="stylesheet" href="{% static 'Main/css/style.css' %}">
+
+</head>
+<body>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+
+
+
+    <header class="site-navbar py-3" role="banner">
+
+      <div class="container-fluid">
+        <div class="row align-items-center">
+
+          <div class="col-6 col-xl-2" data-aos="fade-down">
+            <h1 class="mb-0"><a href="{% url 'webguest:index' %}" class="text-white h2 mb-0">ShutterBug</a></h1>
+          </div>
+          <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
+            <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
+
+              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                <li><a href="{% url 'webguest:index' %}">Home</a></li>
+                <!-- <li class="has-children">
+                  <a href="single.html">Gallery</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Nature</a></li>
+                    <li><a href="#">Portrait</a></li>
+                    <li><a href="#">People</a></li>
+                    <li><a href="#">Architecture</a></li>
+                    <li><a href="#">Animals</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Travel</a></li>
+                    <li class="has-children">
+                      <a href="#">Sub Menu</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li> -->
+                <li class="has-children">
+                  <a href="#">Register</a>
+                  <ul class="dropdown">
+                      <li><a href="{% url 'webguest:UserRegistration' %}">User</a></li>
+                      <li><a href="{% url 'webguest:PhotographerRegistration' %}">Photographer</a></li>
+                      <li><a href="{% url 'webguest:ModelRegistration' %}">Model</a></li>
+                      <li><a href="{% url 'webguest:EditorRegistration' %}">Editor</a></li>
+                  </ul>
+              </li>
+                <li><a href="{% url 'webguest:services' %}">Services</a></li>
+                <li><a href="{% url 'webguest:about' %}">About</a></li>
+                <li><a href="{% url 'webguest:contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="col-6 col-sm-1 offset-sm-1 text-center " data-aos="fade-down">
+            <!-- <div class="d-none d-xl-inline-block">
+              <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
+                <li>
+                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                </li>
+                <li>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                </li>
+                <li>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                </li>
+                <li>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-youtube-play"></span></a>
+                </li>
+              </ul> -->
+              <div class="login-box" style="border: 1px solid #1ae795; padding: 10px;">
+                <a href="{% url 'webguest:Login' %}" class="login-link">Login</a>
+              </div>
+               
+            </div>
+
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>
+
+
+
+    <div class="site-section"  data-aos="fade">
+      <div class="container-fluid">
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-7">
+            <div class="row mb-5">
+              <div class="col-12 ">
+                <h2 class="site-section-heading text-center">About</h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="row mb-5">
+          <div class="col-md-7">
+            <img src="{% static 'Main/images/img_2.jpg' %}" alt="Images" class="img-fluid">
+          </div>
+          <div class="col-md-4 ml-auto">
+            <h3 class="text-white">My Mission</h3>
+            <p>At ShutterBug, our mission is to capture and celebrate life's most precious moments through the art of photography. We believe in the power of visual storytelling to evoke emotions, inspire creativity, and foster connections within our community.</p>
+            <p>With a commitment to excellence and innovation, we strive to provide our clients with exceptional photography services that exceed their expectations. Whether it's a wedding, portrait session, or special event, we are dedicated to delivering stunning images that will be cherished for generations to come.</p>
+        </div>
+        
+        </div>
+
+
+        <div class="row site-section">
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
+            <img src="{% static 'Main/images/person_1.jpg' %}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+            <h2 class="text-white font-weight-light mb-4">Lili Reinhart</h2>
+            <p class="mb-4">Diving deep into the world of editing, I bring stories to life through the lens of my creativity. With a keen eye for detail and a passion for visual storytelling, I craft narratives that captivate and inspire.</p>
+        </div>
+        
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
+            <img src="{% static 'Main/images/person_2.jpg' %}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+            <h2 class="text-white font-weight-light mb-4">Ava Grace</h2>
+            <p class="mb-4">Embracing every moment in front of the camera, I strive to convey stories, emotions, and experiences through the art of modelling. Join me on a journey of creativity and expression.</p>
+        </div>
+
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
+            <img src="{% static 'Main/images/person_4.jpg' %}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+            <h2 class="text-white font-weight-light mb-4">John Smith</h2>
+            <p class="mb-4">As a photographer at ShutterBug, I believe that every moment is worth capturing and cherishing. With my camera in hand, I strive to freeze time and preserve the beauty of life's journey, one frame at a time.</p>
+            <!-- <p>
+                <a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-facebook"></span></a>
+            </p> -->
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer py-4">
+      <div class="container-fluid text-center">
+        <p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+      </div>
+    </div>
+
+    
+
+    
+    
+  </div>
+
+  <script src="{% static 'Main/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'Main/js/popper.min.js' %}"></script>
+  <script src="{% static 'Main/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'Main/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'Main/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'Main/js/swiper.min.js' %}"></script>
+  <script src="{% static 'Main/js/aos.js' %}"></script>
+
+  <script src="{% static 'Main/js/picturefill.min.js' %}"></script>
+  <script src="{% static 'Main/js/lightgallery-all.min.js' %}"></script>
+  <script src="{% static 'Main/js/jquery.mousewheel.min.js' %}"></script>
+  <script src="{% static 'Main/js/main.js' %}"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('#lightgallery').lightGallery();
+    });
+  </script>
+
+</body>
+</html>

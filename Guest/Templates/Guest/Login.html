@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-image: url('{% static "Main/images/natureimg3.jpg" %}');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            margin: auto;
+            margin-top: 100px;
+            border-radius: 5px;
+            background: transparent;
+            backdrop-filter: blur(20px);
+            /* background-color: #f9f9f9; */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border: 1px solid rgb(122, 117, 117); /* Add white border */
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .inputBox {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px); /* Adjusted width */
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            background: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-bottom-color: #007bff;
+        }
+
+        span {
+            position: absolute;
+            left: 0;
+            bottom: 5px;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        input[type="text"]:focus~span,
+        input[type="password"]:focus~span,
+        input[type="text"]:valid~span,
+        input[type="password"]:valid~span {
+            bottom: 30px;
+            font-size: 12px;
+            color: #007bff;
+        }
+
+        /* Adjusted styles for icons */
+        .inputBox i {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            color: #333;
+            transition: 0.5s;
+        }
+
+        .inputBox i:nth-of-type(1) {
+            right: 25px; /* Adjusted position for first icon */
+        }
+
+        .inputBox i:nth-of-type(2) {
+            right: 0; /* Adjusted position for second icon */
+            cursor: pointer; /* Add cursor pointer for the eye icon */
+        }
+
+        .links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 12px; /* Smaller font size */
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome stylesheet link -->
+
+</head>
+
+<body>
+    <div class="box">
+        <form autocomplete="off" method="post">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <div class="inputBox">
+                <input type="text" name="txtemail" id="txtemail" required>
+                <span>Email</span>
+                <i class='bx bxs-envelope'></i>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="txtpassword" id="txtpassword" required>
+                <span>Password</span>
+                <i class="fas fa-eye fa-sm" id="showPassword"></i> <!-- Eye icon button -->
+            </div>
+            
+            
+            <div class="button-container">
+                <input type="submit" name="btnsave" id="btnsave" value="Login">
+                <input type="reset" name="btncancel" id="btncancel" value="Cancel">
+            </div>
+            <br>
+            <p class="text-center mb-0" style="color: rgb(210, 208, 208);">Don't have an Account? <a href="{% url 'webguest:index' %}" style="color: #007bff;">Home</a></p>
+
+
+        </form>
+    </div>
+    <script>
+        // Function to toggle password visibility
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("txtpassword");
+            var icon = document.getElementById("showPassword");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("bx-show");
+                icon.classList.add("bx-hide");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("bx-hide");
+                icon.classList.add("bx-show");
+            }
+        }
+
+        // Add event listener to the eye icon button
+        document.getElementById("showPassword").addEventListener("click", togglePasswordVisibility);
+    </script>
+</body>
+
+</html>
+

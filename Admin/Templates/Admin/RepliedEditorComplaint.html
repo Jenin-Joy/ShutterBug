@@ -1,0 +1,100 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replied Complaint</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff; /* Text color */
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff; /* Heading color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #EB1616; /* Border color */
+        }
+
+        th {
+            background-color: #333; /* Heading background color */
+            color: #EB1616;
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        a {
+            color: #EB1616; /* Link color */
+            text-decoration: none;
+        }
+
+    </style> 
+</head>
+<body>
+    <br><br>
+    <h1>User Complaints</h1>
+    <form name="frmcomplaint" method="POST">
+        {% csrf_token %}
+        <table border="1" align="center">
+            
+            <tr>
+                <th>Slno</th>
+                <th>Title</th>
+                <th>Complaint</th>
+                <th>Date</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Reply</th>
+                
+            </tr>
+            {% for i in editorcomplaintdata %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.complaint_title }}</td>
+                <td>{{ i.complaint_description }}</td>
+                <td>{{ i.complaint_date }}</td>
+                <td>{{ i.editor_id.editor_name }}</td>
+                <td>{{ i.editor_id.editor_email }}</td>
+                <td>{{ i.complaint_reply }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock content %}

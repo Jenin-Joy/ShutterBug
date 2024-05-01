@@ -1,0 +1,123 @@
+{% extends 'Models/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: 'Josefin Sans', monospace; /* Change font family */
+            color: #fff; /* White text color */
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border: 1px solid #1ae795; /* Border color */
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #1ae795; /* White heading color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            
+        }
+
+        th, td {
+            padding: 12px;
+            
+            color: #fff; /* Text color */
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border: 1px solid #1ae795; /* Input border color */
+            border-radius: 5px;
+            background-color: #444; /* Input background color */
+            color: #fff !important; /* Input text color */
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            color: #000; /* Input text color */
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1ae795; /* Submit button background color */
+            color: #000; /* Submit button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0e7e4a; /* Hovered submit button background color */
+        }
+        .highlight {
+            background-color: #353232; /* Highlighted row background color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Profile</h1>
+        <form name="frmEditProfile" action="" method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="txtmodel" value="{{modeldata.model_name}}" required></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" name="txtcontact" value="{{modeldata.model_contact}}" required></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="txtemail" value="{{modeldata.model_email}}" required></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="txtaddress" required>{{modeldata.model_address}}</textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="txtsubmit" value="Save">
+                        <input type="reset" name="txtcancel" value="Cancel">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

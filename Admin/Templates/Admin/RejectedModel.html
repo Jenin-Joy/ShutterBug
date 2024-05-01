@@ -1,0 +1,116 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejected Model</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff; /* Text color */
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff; /* Heading color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #EB1616; /* Border color */
+        }
+
+        th {
+            background-color: #333; /* Heading background color */
+            color: #EB1616;
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        a {
+            color: #EB1616; /* Link color */
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <br>
+    <h1>Rejected Models</h1>
+    <form name="frmrejectedmodel" method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <th>Sl.No</th>
+                <th>Model Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Photo</th>
+                <th>Proof</th>
+                <th>District</th>
+                <th>Action</th>
+                
+            </tr>
+            {% for i in modeldata %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.model_name}}</td>
+                <td>{{i.model_email}}</td>
+                <td>{{i.model_contact}}</td>
+                <td>{{i.model_address}}</td>
+                <td>{{i.model_gender}}</td>
+                <td align="center">
+                    <a href="{{i.model_photo.url}}">
+                        <img src="{{i.model_photo.url}}" height="100" width="100">
+                    </a>
+                </td>
+                <td align="center">
+                    <a href="{{i.model_proof.url}}">
+                        <img src="{{i.model_proof.url}}" height="100" width="100">
+                    </a>
+                </td>
+                <td>{{i.model_place.district_id.district_name}}</td>
+                <td>
+                    <a href="{% url 'webadmin:AcceptModel' i.id %}">Accept</a>
+                </td>                
+            </tr>
+            {% endfor %}
+
+        </table>
+    </form>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock content %}

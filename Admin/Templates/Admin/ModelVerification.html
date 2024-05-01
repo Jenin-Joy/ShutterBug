@@ -1,0 +1,125 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Verification</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff; /* Text color */
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff; /* Heading color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #EB1616; /* Border color */
+        }
+
+        th {
+            background-color: #333; /* Heading background color */
+            color: #EB1616;
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        a {
+            color: #EB1616; /* Link color */
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <form name="frommodelverification" method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="1">
+            <tr align="center"!important>
+                <td colspan="2">ACCEPTED & REJECTED MODEL</td>
+            </tr>
+            <tr align="center">
+                <td colspan="2"> <a href="{% url 'webadmin:AcceptedModel' %}">Accepted Model</a>          |           
+                    <a href="{% url 'webadmin:RejectedModel' %}">Rejected Model</a></td>
+            </tr>
+        </table>
+            <br>
+            <h1>Model Verification</h1>
+
+        <table border="0" align="center">
+            <tr>
+                <th>Sl.No</th>
+                <th>Model Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Photo</th>
+                <th>Proof</th>
+                <th>District</th>
+                <th>Action</th>
+            </tr>
+            {% for i in modeldata %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.model_name}}</td>
+                <td>{{i.model_email}}</td>
+                <td>{{i.model_contact}}</td>
+                <td>{{i.model_address}}</td>
+                <td>{{i.model_gender}}</td>
+                <td align="center">
+                    <a href="{{i.model_photo.url}}">
+                        <img src="{{i.model_photo.url}}" height="100" width="100">
+                    </a>
+                </td>
+                <td align="center">
+                    <a href="{{i.model_proof.url}}">
+                        <img src="{{i.model_proof.url}}" height="100" width="100">
+                    </a>
+                </td>
+                <td>{{i.model_place.district_id.district_name}}</td>
+                <td>
+                    <a href="{% url 'webadmin:AcceptModel' i.id %}">Accept</a>
+                    <a href="{% url 'webadmin:RejectModel' i.id %}">Reject</a>
+                </td> 
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock content %}

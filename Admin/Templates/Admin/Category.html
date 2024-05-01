@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+</head>
+<body>
+    <form name="frmDistrict" action="" method="post">
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td>Category Name</td>
+                <td><input type="text" name="txtcategory" placeholder="Enter Category Name" required value="{{cat.category_name}}"</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="btnsubmit" value="Submit">
+                    <input type="reset" name="btncancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <th>Sl.No</th>
+                <th>Category</th>
+                <th>Action</th>
+                
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.category_name}}</td>
+                <td>
+                    <a href="{% url 'webadmin:DeleteCategory' i.id %}">Delete</a>
+                    <a href="{% url 'webadmin:EditCategory' i.id %}">Edit</a>
+                </td>
+                
+            </tr>
+            {% endfor %}
+        
+        </table>
+    </form>
+</body>
+</html>

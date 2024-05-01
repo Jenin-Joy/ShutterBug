@@ -1,0 +1,68 @@
+{% extends 'Editors/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Gallery</title>
+    <style>
+        th {
+            background-color: #1ae795;
+            color: #000;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1ae795; /* White heading color */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form name="frmAddGallery" action="" method="post" enctype="multipart/form-data">
+        <h1>Add Gallery</h1>
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td>Image</td>
+                <td><input type="file" name="file_image" multiple ></td>
+            </tr>
+            <tr>
+                <td>Caption</td>
+                <td><textarea name="txtcaption"></textarea></td>
+            </tr>
+            <tr >
+                <td colspan="2" align="center">
+                    <input type="submit" name="txtsubmit" value="Save">
+                    <input type="reset" name="txtcancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <th>Sl.No</th>
+                <th>Image</th>
+                <th>Caption</th>
+                <th>Action</th>
+                
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{{i.addgallery_image.url}}"><img src="{{i.addgallery_image.url}}" width="200" height="200" alt=""></a></td>
+                <td>{{i.addgallery_caption}}</td>
+                <td>
+                    <a href="{% url 'webeditor:DeleteGallery' i.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </form>
+</body>
+</html>
+{% endblock content %}

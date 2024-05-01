@@ -1,0 +1,97 @@
+{% extends 'Models/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Pic</title>
+    <style>
+        th {
+            background-color: #1ae795;
+            color: #000;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1ae795; /* White heading color */
+            margin-bottom: 20px;
+        }
+
+        /* CSS for the first table */
+        table.first-table {
+            border-collapse: collapse;
+            margin: auto; /* Center-align the table */
+            
+            border-radius: 10px; /* Rounded border corners */
+        }
+
+        table.first-table td, table.first-table th {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd; /* Add bottom border for cells */
+        }
+
+        table.first-table td input[type="file"] {
+            padding: 10px;
+            border: 1px solid #1ae795;
+            border-radius: 5px;
+            width: 80%; /* Adjust input width */
+            box-sizing: border-box;
+        }
+
+        table.first-table td input[type="submit"],
+        table.first-table td input[type="reset"] {
+            padding: 10px 20px;
+            background-color: #1ae795;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table.first-table td input[type="submit"]:hover,
+        table.first-table td input[type="reset"]:hover {
+            background-color: #128c7e; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <form name="frmModelPic" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Model Pictures</h1>
+        <table class="first-table" border="2" align="center">
+            <tr>
+                <td>Image</td>
+                <td><input type="file" name="file_image" multiple></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="txtsubmit" value="Save">
+                    <input type="reset" name="txtcancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <th>Sl.No</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{{i.modelpost_image.url}}"><img src="{{i.modelpost_image.url}}" width="200" height="200" alt=""></a></td>
+                <td>
+                    <a href="{% url 'webmodel:DeleteModelPic' i.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+{% endblock content %}
